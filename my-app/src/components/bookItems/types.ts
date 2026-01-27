@@ -33,12 +33,12 @@ export interface Books {
 
   export interface BookListProps {
     books: Books[];
-    setActivePage: any;
-    setNewBook: any;
+    setActivePage: React.Dispatch<React.SetStateAction<number | null>>;
+    onBookAdd: (book: Books)=> void;
   }
   
   export interface BookPathProps {
-    setAllBooks?: any;
+    setAllBooks?: React.Dispatch<React.SetStateAction<Books[]>>;
     id?: number;
     coverImage?: string;
     book_title?: string;
@@ -47,6 +47,6 @@ export interface Books {
     notes?: string;
     status?: StatusType;
     rating?: number;
-    pages_quantity?: number
+    pages_quantity?: number;
   }
   export type StatusType = "in process" | "have read" | "haven't read" | undefined

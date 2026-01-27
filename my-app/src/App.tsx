@@ -8,7 +8,6 @@ import { BookPath } from './components/bookPath/bookPath';
 
 
 function App() {
-
   const [activePage, setActivePage] = useState<number | null>(null)
   const [activeBook, setActiveBook] = useState<BookProps | null>(null)
   const [newBook, setNewBook] = useState<Books | null>(null)
@@ -46,12 +45,17 @@ function App() {
       setNewBook(book)
     }
   }
-//toDo: для каждого компонента свой props
+
+  const onBookAdd = (book: Books) => {
+    localStorage.setItem('books', JSON.stringify([book]))
+    setNewBook(book)
+  }
+  
 
   return (
     <div className="App">
       <Routes>
-      <Route path="/" element={  <BookList books={allBooks} setActivePage={setActivePage} setNewBook={bookSetter}/>} />
+      <Route path="/" element={  <BookList books={allBooks} setActivePage={setActivePage} onBookAdd={bookSetter}/>} />
       <Route path="/book/:id" element={ <BookPath setAllBooks={setAllBooks} id={activeBook?.id} coverImage={activeBook?.coverImage} book_title={activeBook?.book_title}
         author={activeBook?.author} description={activeBook?.description} notes={activeBook?.notes} status={activeBook?.status}
         rating={activeBook?.rating} pages_quantity={activeBook?.pages_quantity}/> } />

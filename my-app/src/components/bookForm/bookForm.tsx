@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, Select, Rate, InputNumber, Upload, message } from 'antd';
-import { BookProps } from '../bookItems/types';
+import { BookProps, Books } from '../bookItems/types';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons'
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 interface AddBookModalProps {
-  onAddBook: (book: BookProps) => void;
+  onAddBook: (book: Books) => void;
 }
 
 export function AddBookModal({ onAddBook }: AddBookModalProps) {

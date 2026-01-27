@@ -14,7 +14,7 @@ function searchFilteredBooks(books: Books[], input: string) {
   return filteredBooks
 }
 
-export function BookList({ books, setActivePage, setNewBook }: BookListProps) {
+export function BookList({ books, setActivePage, onBookAdd }: BookListProps) {
   const [text, setText] = useState('')
   const [filteredBooks, setFilteredBooks] = useState(books)
 
@@ -32,7 +32,7 @@ export function BookList({ books, setActivePage, setNewBook }: BookListProps) {
 
   return (<>
     <Input type="text" value={text} onChange={handleInputChange}/>
-    <AddBookModal onAddBook={setNewBook} />
+    <AddBookModal onAddBook={onBookAdd} />
     <div style={bookStyles.container}>
       {filteredBooks.map((book) => (
         <Link to={`/book/${book.id}`} onClick={() => setActivePage(book.id)}>
